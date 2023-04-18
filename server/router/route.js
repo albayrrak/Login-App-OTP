@@ -8,9 +8,11 @@ const controller = new Authenticate();
 import { AuthMiddleware } from '../middleware/auth.js';
 const authMiddleware = new AuthMiddleware();
 
+import { registerMail } from '../controllers/mailler.js';
+
 /* POST METHODS */
 router.route('/register').post(controller.register); // register user
-router.route('/registerMail').post(); // send mail
+router.route('/registerMail').post(registerMail); // send mail
 router.route('/authenticate').post((req, res) => res.end()); // authenticate user
 router.route('/login').post(controller.verifyUser, controller.login); // login in app
 
